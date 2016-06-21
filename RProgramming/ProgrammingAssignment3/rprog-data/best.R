@@ -7,21 +7,18 @@ best <- function(state, outcome) {
         stop("invalid state")
     }
     if(outcome == "heart attack") {
-        minVal <- min(suppressWarnings(as.double(stateDat$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack)), na.rm = TRUE)
-        stateOutcome <- stateDat[which(suppressWarnings(as.numeric(stateDat$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack)) == minVal),]
-        stateOutcome$Hospital.Name
+        stateOutcome <- stateDat[order(as.double(stateDat$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack), stateDat$Hospital.Name),]
+        stateOutcome$Hospital.Name[1]
     }
     else if(outcome == "heart failure") {
-        minVal <- min(suppressWarnings(as.double(stateDat$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure)), na.rm = TRUE)
-        stateOutcome <- stateDat[which(suppressWarnings(as.numeric(stateDat$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure)) == minVal),]
-        stateOutcome$Hospital.Name
+        stateOutcome <- stateDat[order(as.double(stateDat$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure), stateDat$Hospital.Name),]
+        stateOutcome$Hospital.Name[1]
     }
     else if(outcome == "pneumonia") {
-        minVal <- min(suppressWarnings(as.double(stateDat$Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia)), na.rm = TRUE)
-        stateOutcome <- stateDat[which(suppressWarnings(as.numeric(stateDat$Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia)) == minVal),]
-        stateOutcome$Hospital.Name
+        stateOutcome <- stateDat[order(as.double(stateDat$Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia), stateDat$Hospital.Name),]
+        stateOutcome$Hospital.Name[1]
     } else {
         stop("invalid outcome")
     }
-        
+    
 }
